@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ConsultantController {
 
+    //test new branch
     @GetMapping("/consultant")
     public ConsultantResponse consultant(@RequestParam(required = false, value="ConsultantId") String consultantId){
         ConsultantResponse consultantResponse = new ConsultantResponse();
