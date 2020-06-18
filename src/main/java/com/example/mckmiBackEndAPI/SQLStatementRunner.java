@@ -1,14 +1,26 @@
 package com.example.mckmiBackEndAPI;
 
 import org.apache.commons.dbutils.handlers.MapListHandler;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.system.SystemProperties;
 
 import java.sql.*;
 import java.util.List;
 import java.util.Map;
 
+
+
+
 public class SQLStatementRunner {
+
+
+
     private final String jdbcDriver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     private final String connectionURL = "jdbc:sqlserver://DESKTOP-EKDQISM;user=MCKMIBackendUser;password=Password1;";
+
+
+
+
 
     public SQLStatementRunner(){
 
