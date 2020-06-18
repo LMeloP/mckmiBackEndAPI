@@ -1,17 +1,16 @@
 package com.example.mckmiBackEndAPI;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+
 public class ConsultantResponse {
 
-    private ArrayList<Consultant> Consultants;
-    public ArrayList<Consultant> getConsultants() {
-        return Consultants;
-    }
 
-    public void setConsultants(List<Map<String, Object>> result) {
+
+    public ArrayList<Consultant> setConsultants(List<Map<String, Object>> result) {
 
         ArrayList<Consultant> consultants = new ArrayList<>();
 
@@ -22,14 +21,14 @@ public class ConsultantResponse {
                     stringObjectMap.get("ConsultantRole").toString(),
                     Integer.parseInt(stringObjectMap.get("ClientID").toString()) ));
         }
+        return consultants;
 
-        Consultants = consultants;
     }
 
 
 
 
-    public void getConsultantData(String consultantId){
+    public ArrayList<Consultant> getConsultantData(String consultantId){
 
         String sql =    "SELECT ConsultantID " +
                 ",ConsultantName " +
@@ -40,13 +39,13 @@ public class ConsultantResponse {
                 "WHERE ConsultantID = " + consultantId;
 
         List<Map<String, Object>> result = new SQLStatementRunner().runQueryStmt(sql);
-        setConsultants(result);
+        return setConsultants(result);
 
     }
 
 
 
-    public void getAllConsultantData(){
+    public ArrayList<Consultant> getAllConsultantData(){
 
         String sql = "SELECT ConsultantID " +
                 ",ConsultantName " +
@@ -56,6 +55,6 @@ public class ConsultantResponse {
                 "FROM Consultant ";
 
         List<Map<String, Object>> result = new SQLStatementRunner().runQueryStmt(sql);
-        setConsultants(result);
+        return setConsultants(result);
     }
 }
