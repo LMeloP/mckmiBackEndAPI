@@ -8,12 +8,10 @@ import java.util.Map;
 public class ClientResponse {
 
 
-    private ArrayList<Client> Clients;
-    public ArrayList<Client> getClients() {
-        return Clients;
-    }
 
-    public void setClients(List<Map<String, Object>> result) {
+
+
+    public  ArrayList<Client> setClients(List<Map<String, Object>> result) {
 
         ArrayList<Client> clients = new ArrayList<>();
 
@@ -24,13 +22,13 @@ public class ClientResponse {
            //         stringObjectMap.get("ClientName").toString());
         }
 
-        Clients = clients;
+        return clients;
     }
 
 
 
 
-    public void getClientData(String clientId){
+    public ArrayList<Client> getClientData(String clientId){
         //System.out.println("calling getClientData(String clientId)");
         String sql = "SELECT ClientID, ClientName " +
                 "FROM Client " +
@@ -38,18 +36,18 @@ public class ClientResponse {
 
         List<Map<String, Object>> result = new SQLStatementRunner().runQueryStmt(sql);
 
-        setClients(result);
+        return setClients(result);
     }
 
 
-    public void getAllClientData(){
+    public ArrayList<Client> getAllClientData(){
         //System.out.println("Calling getClientData()");
         String sql = "SELECT ClientID, ClientName " +
                 "FROM Client ";
 
         List<Map<String, Object>> result = new SQLStatementRunner().runQueryStmt(sql);
 
-        setClients(result);
+       return setClients(result);
     }
 
     public static void insertClient(String clientName){

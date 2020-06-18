@@ -2,21 +2,23 @@ package com.example.mckmiBackEndAPI;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 
 @RestController
 public class ClientController {
 
     @GetMapping("/client")
-    public ClientResponse client(@RequestParam(required = false, value="ClientId") String clientId){
+    public ArrayList<Client> client(@RequestParam(required = false, value="ClientId") String clientId){
 
 
           ClientResponse clientResponse = new ClientResponse();
           if(clientId!=null){
-              clientResponse.getClientData(clientId);
+             return clientResponse.getClientData(clientId);
           }else{
-              clientResponse.getAllClientData();
+              return clientResponse.getAllClientData();
           }
-            return clientResponse;
+
     }
 
     @PostMapping("/client")

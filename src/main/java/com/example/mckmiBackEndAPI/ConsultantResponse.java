@@ -26,8 +26,6 @@ public class ConsultantResponse {
     }
 
 
-
-
     public ArrayList<Consultant> getConsultantData(String consultantId){
 
         String sql =    "SELECT ConsultantID " +
