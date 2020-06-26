@@ -6,37 +6,35 @@ import java.util.Map;
 
 public class SkillResponse {
 
-    private ArrayList<Skill> Skills;
-    public ArrayList<Skill> getSkills() {
-        return Skills;
-    }
 
-    public void setSkills(List<Map<String, Object>>result){
+    public ArrayList<Skill> setSkills(List<Map<String, Object>>result){
         ArrayList<Skill> skills = new ArrayList<>();
 
         for (Map<String, Object>stringObjectMap : result){
-            skills.add(new Skill(Integer.parseInt(stringObjectMap.get("SkillID").toString()), stringObjectMap.get("SkillDescription").toString()));
+            skills.add(new Skill(Integer.parseInt(stringObjectMap.get("SkillID").toString()),
+                    stringObjectMap.get("SkillDescription").toString()));
             }
-        Skills = skills;
+       // Skills = skills;
+        return skills;
     }
 
 
-    public void getSkillData(String skillId){
+    public ArrayList<Skill> getSkillData(String skillId){
 
         String sql = "SELECT SkillID, SkillDescription " + "FROM Skill " + "WHERE SkillID = " + skillId;
 
         List<Map<String, Object>> result = new SQLStatementRunner().runQueryStmt(sql);
 
-        setSkills(result);
+        return setSkills(result);
     }
 
 
-    public void getAllSkillData(){
+      public ArrayList<Skill> getAllSkillData(){
 
         String sql = "SELECT SkillID, SkillDescription " + "FROM Skill ";
 
         List<Map<String, Object>> result = new SQLStatementRunner().runQueryStmt(sql);
 
-        setSkills(result);
+        return setSkills(result);
     }
 }
