@@ -8,6 +8,7 @@ import java.util.ArrayList;
 @RestController
 public class ClientController {
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/client")
     public ArrayList<Client> client(@RequestParam(required = false, value="ClientId") String clientId){
 
